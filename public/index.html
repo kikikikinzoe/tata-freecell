@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, viewport-fit=cover">
+  <meta name="color-scheme" content="light">
+  <title>塔塔的空当接龙 ♡</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <main class="app" aria-label="塔塔的空当接龙游戏">
+    <header class="masthead">
+      <div class="title-wrap"><span class="flower" aria-hidden="true">✿</span><div><h1>塔塔的空当接龙 <span class="heart">♡</span></h1><p>FreeCell · 一点点耐心，一点点好运</p></div></div>
+      <span class="tag">♠ ♥ ♣ ♦</span>
+    </header>
+    <div class="stats" aria-live="polite">
+      <span>牌局 <strong id="dealNo">#—</strong></span>
+      <span>步数 <strong id="moves">0</strong></span>
+      <span>时间 <strong id="time">00:00</strong></span>
+      <span>归位 <strong id="progress">0/52</strong></span>
+    </div>
+    <div class="actions" aria-label="操作按钮">
+      <button type="button" id="newBtn" class="primary">↻ 新一局</button>
+      <button type="button" id="dailyBtn">☀ 每日</button>
+      <button type="button" id="undoBtn">↶ 撤销</button>
+      <button type="button" id="redoBtn">↷ 重做</button>
+      <button type="button" id="hintBtn">✧ 提示</button>
+      <button type="button" id="autoBtn">↑ 收牌</button>
+    </div>
+    <section class="upper" aria-label="暂存位与收牌区">
+      <div class="upper-title"><span>暂存位 <small>每格限一张</small></span><span>收牌区 <small>A → K</small></span></div>
+      <div class="upper-grid"><div id="cells" class="cell-row" aria-label="四个暂存位"></div><div class="top-row" id="foundations" aria-label="四个收牌区"></div></div>
+    </section>
+    <section class="tableau-area" aria-label="八叠纸牌"><div class="section-title"><span>牌阵</span><small>先点牌，再点目标位置</small></div><div id="tableau" class="tableau"></div></section>
+    <div id="message" class="message" role="status" aria-live="polite">选一张牌开始吧 ♡</div>
+    <div class="footer"><span>红黑交替 · 数字递减 · 四花色各自从 A 收到 K</span><button type="button" id="helpBtn">规则 ?</button></div>
+  </main>
+  <div class="overlay hidden" id="helpOverlay" role="dialog" aria-modal="true" aria-label="游戏规则">
+    <div class="modal"><button type="button" class="close" id="closeHelp" aria-label="关闭">×</button><h2>空当接龙怎么玩？ ♡</h2><p>把 52 张牌按花色，从 A 到 K 依次放入右上角四个收牌区，就通关啦。</p><p>桌面八列可以<strong>红黑交替、从大到小</strong>叠牌。左上四个空当各只能暂存一张牌。空列可以放任意牌或可移动牌组。</p><p>轻点要移动的牌，再轻点目标列、空当或收牌区。连续递减交错颜色的牌组可以一起移动，但可移动数量受空当和空列影响。</p><p>「收牌」会自动收取安全的牌，「撤销」可以退回上一步。新牌局和每日挑战都能随时开始。</p><button type="button" class="primary full" id="startHelp">知道啦，开玩 ♡</button></div>
+  </div>
+  <div class="overlay hidden" id="winOverlay" role="dialog" aria-modal="true" aria-label="通关">
+    <div class="modal win"><span class="bigflower">✿</span><h2>通关啦！</h2><p>老婆好厉害，52 张牌全都回家了 ♡</p><div id="winStats"></div><button type="button" class="primary full" id="nextWin">再玩一局</button><button type="button" class="subtle full" id="closeWin">继续看看牌面</button></div>
+  </div>
+  <script src="./engine.js"></script>
+  <script src="./ui.js"></script>
+  <script src="./bridge.js"></script>
+</body>
+</html>

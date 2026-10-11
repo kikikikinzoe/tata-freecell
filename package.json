@@ -1,0 +1,20 @@
+{
+  "name":"tata-freecell-mcp",
+  "version":"1.0.0",
+  "private":true,
+  "type":"commonjs",
+  "description":"塔塔的空当接龙 — a tiny inline MCP App for ChatGPT with a playable FreeCell game",
+  "engines":{"node":">=20"},
+  "scripts":{
+    "start":"node server.mjs",
+    "dev":"node server.mjs",
+    "test":"node --test test/*.test.cjs",
+    "build:standalone":"node -e \"require('node:fs').writeFileSync('freecell-standalone.html',require('./lib/bundle.cjs').buildWidgetHTML())\""
+  },
+  "dependencies":{
+    "@modelcontextprotocol/sdk":"^1.0.0",
+    "@modelcontextprotocol/ext-apps":"^1.0.0",
+    "express":"^4.21.0",
+    "cors":"^2.8.5"
+  }
+}
